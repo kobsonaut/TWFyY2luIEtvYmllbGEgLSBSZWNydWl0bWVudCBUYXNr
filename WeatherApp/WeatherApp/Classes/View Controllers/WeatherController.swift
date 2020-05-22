@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class WeatherController: ViewController, UITableViewDataSource, UITableViewDelegate {
+final class WeatherController: ViewController {
 
     // MARK: Constants
     struct Constants {
@@ -16,8 +16,9 @@ final class WeatherController: ViewController, UITableViewDataSource, UITableVie
     }
 
     // MARK: Members
+    private var webserviceCommunicator = WebserviceCommunicator()
+    var items = [ItemWeather]()
     var tableView: UITableView = UITableView()
-    var items: [String] = ["Szczecin", "Warsaw", "London", "Vienna"]
 
     override func loadView() {
         super.loadView()
@@ -27,17 +28,30 @@ final class WeatherController: ViewController, UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.cell_id)
         addSubviewToControllerContent(sub: tableView)
+
+        let mockValues = ["Szczecin", "Warszawa", "Londyn", "Wiedeń", "Amsterdam", "Praga", "Berlin"]
+        for value in mockValues {
+            self.fetchWeather(for: value)
+        }
     }
 
-    // MARK: Table view
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell_id, for: indexPath)
-        cell.textLabel?.text = self.items[indexPath.row]
-        return cell
+    // MARK: Helpers
+    /// Fetch the weather data
+    func fetchWeather(for city: String) {
+        let params: [String: String] = ["q": city, "appid": Configuration.Server.APP_ID]
+        webserviceCommunicator.request(str_url: Configuration.Server
+            .WEATHER_URL,
+                                       params: params,
+                                       completion: { (result: Result<ItemWeather, NetworkError>) in
+                                        switch result {
+                                        case .failure(let error):
+                                            dump(error)
+                                        case .success(let weather):
+                                            self.items.append(weather)
+                                            dump(weather)
+                                            self.tableView.reloadData()
+                                        }
+        })
     }
 
     // MARK: Layout
@@ -49,5 +63,20 @@ final class WeatherController: ViewController, UITableViewDataSource, UITableVie
         let sub = self.tableView
         cframe = self.controllerContentView.bounds
         sub.frame = cframe
+    }
+}
+
+
+extension WeatherController: UITableViewDataSource, UITableViewDelegate {
+    // MARK: Table view
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell_id, for: indexPath)
+        cell.textLabel?.text = items[indexPath.row].name
+
+        return cell
     }
 }
