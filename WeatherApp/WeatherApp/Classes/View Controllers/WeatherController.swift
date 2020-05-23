@@ -20,8 +20,12 @@ final class WeatherController: ViewController {
     var items = [ItemWeather]()
     var tableView: UITableView = UITableView()
 
+    // MARK: Life cycle
     override func loadView() {
         super.loadView()
+
+        // Settings
+        self.title = "Clima"
 
         // Table view
         tableView.dataSource = self
@@ -33,6 +37,10 @@ final class WeatherController: ViewController {
         for value in mockValues {
             self.fetchWeather(for: value)
         }
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(navigationBarButtonPressed))
     }
 
     // MARK: Helpers
@@ -54,6 +62,10 @@ final class WeatherController: ViewController {
         })
     }
 
+    @objc func navigationBarButtonPressed() {
+
+    }
+
     // MARK: Layout
     override func layoutElements() {
         super.layoutElements()
@@ -66,7 +78,7 @@ final class WeatherController: ViewController {
     }
 }
 
-
+ 
 extension WeatherController: UITableViewDataSource, UITableViewDelegate {
     // MARK: Table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
