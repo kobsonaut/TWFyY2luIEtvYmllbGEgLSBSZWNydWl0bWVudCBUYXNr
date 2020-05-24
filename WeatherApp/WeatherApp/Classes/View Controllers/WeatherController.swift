@@ -8,11 +8,12 @@
 
 import UIKit
 
-final class WeatherController: ViewController {
+final class WeatherController: ViewController, AddWeatherControllerProtocol {
 
     // MARK: Constants
     struct Constants {
         static let cell_id = "WeatherCell"
+        static let row_height = CGFloat(80.0)
     }
 
     // MARK: Members
@@ -28,42 +29,45 @@ final class WeatherController: ViewController {
         self.title = "Clima"
 
         // Table view
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.cell_id)
-        addSubviewToControllerContent(sub: tableView)
+        createTableView()
 
-        let mockValues = ["Szczecin", "Warszawa", "Londyn", "Wiedeń", "Amsterdam", "Praga", "Berlin"]
-        for value in mockValues {
-            self.fetchWeather(for: value)
-        }
-
+        // Navigation bar
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(navigationBarButtonPressed))
     }
 
     // MARK: Helpers
-    /// Fetch the weather data
-    func fetchWeather(for city: String) {
-        let params: [String: String] = ["q": city, "appid": Configuration.Server.APP_ID]
-        webserviceCommunicator.request(str_url: Configuration.Server
-            .WEATHER_URL,
-                                       params: params,
-                                       completion: { (result: Result<ItemWeather, NetworkError>) in
-                                        switch result {
-                                        case .failure(let error):
-                                            dump(error)
-                                        case .success(let weather):
-                                            self.items.append(weather)
-                                            dump(weather)
-                                            self.tableView.reloadData()
-                                        }
-        })
+    func createTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.backgroundColor = UIColor.clientYellow
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: Constants.cell_id)
+        addSubviewToControllerContent(sub: tableView)
     }
 
     @objc func navigationBarButtonPressed() {
+        let vc = ServiceManager.shared.addWeatherController()
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc,
+                                                      animated: true)
+    }
 
+    // MARK: AddWeatherControllerProtocol
+    func userEnteredNewCityName(city: String) {
+        let params: [String: String] = ["q": city, "appid": Configuration.Server.APP_ID]
+        self.webserviceCommunicator.request(str_url: Configuration.Server.WEATHER_URL,
+                                            params: params,
+                                            completion: { (result: Result<ItemWeather, NetworkError>) in
+                                                switch result {
+                                                case .failure(let error):
+                                                    dump(error)
+                                                case .success(let weather):
+                                                    self.items.append(weather)
+                                                    dump(weather)
+                                                    self.tableView.reloadData()
+                                                }
+        })
     }
 
     // MARK: Layout
@@ -86,9 +90,14 @@ extension WeatherController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell_id, for: indexPath)
-        cell.textLabel?.text = items[indexPath.row].name
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cell_id, for: indexPath) as? TableViewCell {
+            cell.updateData(item: items[indexPath.row])
+            return cell
+        }
+        return UITableViewCell()
+    }
 
-        return cell
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.row_height
     }
 }

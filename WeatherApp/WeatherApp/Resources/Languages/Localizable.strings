@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  WeatherApp
+
+  Created by Kobsonauta on 23/05/2020.
+  Copyright © 2020 Kobsonauta. All rights reserved.
+*/
+
+// Weather - Home
+"lang_weather_title" = "Clima";
+
+// Weather - Add
+"lang_add_weather_button_title" = "Show Weather Forecast";

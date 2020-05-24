@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F6E387E24797D9F002E5E5F /* AddWeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6E387D24797D9F002E5E5F /* AddWeatherController.swift */; };
+		8F6E388124797FD6002E5E5F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6E388024797FD6002E5E5F /* InfoView.swift */; };
+		8F6E38842479814D002E5E5F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6E38832479814D002E5E5F /* Button.swift */; };
+		8F6E3888247983FD002E5E5F /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F6E3885247983FD002E5E5F /* Lato-Light.ttf */; };
+		8F6E3889247983FD002E5E5F /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F6E3886247983FD002E5E5F /* Lato-Regular.ttf */; };
+		8F6E388A247983FD002E5E5F /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F6E3887247983FD002E5E5F /* Lato-Bold.ttf */; };
+		8F6E388C24798656002E5E5F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F6E388B24798656002E5E5F /* Localizable.strings */; };
+		8F6E388E247A87D6002E5E5F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6E388D247A87D6002E5E5F /* TableViewCell.swift */; };
 		8FBF50A42476984B006C86C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF50A32476984B006C86C7 /* AppDelegate.swift */; };
 		8FBF50A62476984B006C86C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF50A52476984B006C86C7 /* SceneDelegate.swift */; };
 		8FBF50A82476984B006C86C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF50A72476984B006C86C7 /* ViewController.swift */; };
@@ -25,6 +33,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8F6E387D24797D9F002E5E5F /* AddWeatherController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeatherController.swift; sourceTree = "<group>"; };
+		8F6E388024797FD6002E5E5F /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		8F6E38832479814D002E5E5F /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		8F6E3885247983FD002E5E5F /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		8F6E3886247983FD002E5E5F /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		8F6E3887247983FD002E5E5F /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		8F6E388B24798656002E5E5F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		8F6E388D247A87D6002E5E5F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		8FBF50A02476984B006C86C7 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FBF50A32476984B006C86C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FBF50A52476984B006C86C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +71,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F6E387F24797F71002E5E5F /* InfoView */ = {
+			isa = PBXGroup;
+			children = (
+				8F6E388024797FD6002E5E5F /* InfoView.swift */,
+			);
+			path = InfoView;
+			sourceTree = "<group>";
+		};
+		8F6E388224798132002E5E5F /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				8F6E38832479814D002E5E5F /* Button.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		8FBF50972476984B006C86C7 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				8FBF50D82476C037006C86C7 /* WeatherController.swift */,
+				8F6E387D24797D9F002E5E5F /* AddWeatherController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -159,6 +192,7 @@
 			children = (
 				8FBF50D12476A9E6006C86C7 /* View */,
 				8FBF50CE2476A730006C86C7 /* Controller */,
+				8F6E388224798132002E5E5F /* Button */,
 				8FBF50C32476A1FE006C86C7 /* List */,
 			);
 			path = UI;
@@ -183,6 +217,7 @@
 		8FBF50C52476A21A006C86C7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				8F6E388D247A87D6002E5E5F /* TableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -219,6 +254,9 @@
 		8FBF50CB2476A455006C86C7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				8F6E3887247983FD002E5E5F /* Lato-Bold.ttf */,
+				8F6E3885247983FD002E5E5F /* Lato-Light.ttf */,
+				8F6E3886247983FD002E5E5F /* Lato-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -226,6 +264,7 @@
 		8FBF50CC2476A45A006C86C7 /* Languages */ = {
 			isa = PBXGroup;
 			children = (
+				8F6E388B24798656002E5E5F /* Localizable.strings */,
 			);
 			path = Languages;
 			sourceTree = "<group>";
@@ -241,6 +280,7 @@
 		8FBF50D12476A9E6006C86C7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8F6E387F24797F71002E5E5F /* InfoView */,
 				8FBF50D22476A9F1006C86C7 /* View.swift */,
 			);
 			path = View;
@@ -304,8 +344,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F6E388A247983FD002E5E5F /* Lato-Bold.ttf in Resources */,
+				8F6E3888247983FD002E5E5F /* Lato-Light.ttf in Resources */,
+				8F6E3889247983FD002E5E5F /* Lato-Regular.ttf in Resources */,
 				8FBF50B324769851006C86C7 /* LaunchScreen.storyboard in Resources */,
 				8FBF50D52476B0F6006C86C7 /* Colors.xcassets in Resources */,
+				8F6E388C24798656002E5E5F /* Localizable.strings in Resources */,
 				8FBF50B024769851006C86C7 /* Assets.xcassets in Resources */,
 				8FBF50AB2476984B006C86C7 /* Main.storyboard in Resources */,
 			);
@@ -318,11 +362,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F6E388E247A87D6002E5E5F /* TableViewCell.swift in Sources */,
 				8FBF50AE2476984B006C86C7 /* WeatherApp.xcdatamodeld in Sources */,
 				8FBF50E124786532006C86C7 /* Configuration.swift in Sources */,
+				8F6E387E24797D9F002E5E5F /* AddWeatherController.swift in Sources */,
 				8FBF50D72476B151006C86C7 /* Extensions.swift in Sources */,
 				8FBF50A82476984B006C86C7 /* ViewController.swift in Sources */,
+				8F6E388124797FD6002E5E5F /* InfoView.swift in Sources */,
 				8FBF50DB2476C05C006C86C7 /* ServiceManager.swift in Sources */,
+				8F6E38842479814D002E5E5F /* Button.swift in Sources */,
 				8FBF50D32476A9F1006C86C7 /* View.swift in Sources */,
 				8FBF50DF247714A0006C86C7 /* WebserviceCommunicator.swift in Sources */,
 				8FBF50A42476984B006C86C7 /* AppDelegate.swift in Sources */,

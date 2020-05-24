@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: ViewController
-open class ViewController: UIViewController {
+class ViewController: UIViewController, ButtonProtocol {
 
     // MARK: Members
     private var controllerView: ControllerView {
@@ -25,11 +25,11 @@ open class ViewController: UIViewController {
     }
 
     // MARK: Init
-    public convenience init() {
+    convenience init() {
         self.init(nibName: nil, bundle: nil)
     }
 
-    public override init(nibName _nib: String?, bundle _bundle: Bundle?) {
+    override init(nibName _nib: String?, bundle _bundle: Bundle?) {
         super.init(nibName: _nib, bundle: _bundle)
 
         edgesForExtendedLayout = []
@@ -38,34 +38,34 @@ open class ViewController: UIViewController {
         self.initControllerValues()
     }
 
-    public required init?(coder _decoder: NSCoder) {
+    required init?(coder _decoder: NSCoder) {
         super.init(coder: _decoder)
     }
 
-    open func initControllerValues() {
+    func initControllerValues() {
 
     }
 
     // MARK: Getter / Setter
-    public var controllerHeaderView: UIView {
+    var controllerHeaderView: UIView {
         get {
             return self.controllerView.header
         }
     }
 
-    public var controllerContentView: UIView {
+    var controllerContentView: UIView {
         get {
             return self.controllerView.content
         }
     }
 
-    public var controllerBottomView: UIView {
+    var controllerBottomView: UIView {
         get {
             return self.controllerView.bottom
         }
     }
 
-    open func addSubviewToControllerHeader(sub: UIView?) {
+    func addSubviewToControllerHeader(sub: UIView?) {
         if sub == nil {
             return
         }
@@ -74,7 +74,7 @@ open class ViewController: UIViewController {
         self.controllerHeaderView.addSubview(sub!)
     }
 
-    open func addSubviewToControllerContent(sub: UIView?) {
+    func addSubviewToControllerContent(sub: UIView?) {
         if sub == nil {
             return
         }
@@ -83,7 +83,7 @@ open class ViewController: UIViewController {
         self.controllerContentView.addSubview(sub!)
     }
 
-    open func addSubviewToControllerBottom(sub: UIView?) {
+    func addSubviewToControllerBottom(sub: UIView?) {
         if sub == nil {
             return
         }
@@ -93,7 +93,9 @@ open class ViewController: UIViewController {
     }
 
     // MARK: Creation
-    open override func loadView() {
+    override func loadView() {
+        super.loadView()
+
         if ( self.isViewLoaded == false ) {
             self.view = ControllerView()
 
@@ -110,21 +112,28 @@ open class ViewController: UIViewController {
         }
     }
 
-    open func loadHeader(view _header:UIView) {
+    func loadHeader(view _header:UIView) {
         // Update size or some other stuff
     }
 
-    open func loadBottom(view _bottom:UIView) {
+    func loadBottom(view _bottom:UIView) {
         // Update size or some other stuff
+    }
+
+    // MARK: ButtonProtocol
+    func buttonWasPressed(button: Button, type: Button.BtnType) {
+        // Add action
     }
 
     // MARK: Layout
-    open override func viewDidLayoutSubviews() {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
         // Layout
         layoutElements()
     }
 
-    open func layoutElements() {
+    func layoutElements() {
         // Layout
     }
 }

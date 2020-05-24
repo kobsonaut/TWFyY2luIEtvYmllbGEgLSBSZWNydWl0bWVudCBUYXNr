@@ -7,15 +7,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "64E606FB-8B3E-43C5-9606-8554C4AD6F27"
+            uuid = "617FA7CE-1508-41E5-9CBA-30B778ED3D5D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WeatherApp/Classes/View Controllers/WeatherController.swift"
+            filePath = "WeatherApp/Classes/View Controllers/AddWeatherController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "navigationBarButtonPressed()"
             landmarkType = "7">
          </BreakpointContent>

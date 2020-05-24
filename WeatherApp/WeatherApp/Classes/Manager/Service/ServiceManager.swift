@@ -25,4 +25,9 @@ extension ServiceManager {
         let vc = WeatherController()
         return vc
     }
+
+    func addWeatherController() -> AddWeatherController {
+        let vc = AddWeatherController()
+        return vc
+    }
 }

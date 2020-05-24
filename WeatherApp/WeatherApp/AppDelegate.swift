@@ -41,6 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.barTintColor = .clientMain
         navigationBarAppearace.isTranslucent = false
         navigationBarAppearace.barStyle = .black
+        navigationBarAppearace.setBackgroundImage(UIImage(), for:.default)
+        navigationBarAppearace.shadowImage = UIImage()
     }
 
     // MARK: - Core Data stack
