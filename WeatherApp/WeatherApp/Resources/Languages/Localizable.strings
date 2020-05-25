@@ -8,6 +8,7 @@
 
 // Weather - Home
 "lang_weather_title" = "Clima";
+"lang_weather_navbar_title" = "°C / °F";
 
 // Weather - Add
 "lang_add_weather_button_title" = "Show Weather Forecast";

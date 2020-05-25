@@ -118,3 +118,25 @@ extension UILabel {
         self.sizeForText(min: CGRect.zero, max: self.bounds)
     }
 }
+
+
+// MARK: CodingUserInfoKey
+extension CodingUserInfoKey {
+   static let context = CodingUserInfoKey(rawValue: "context")
+}
+
+
+// MARK: Double
+extension Double {
+    var roundedCelcius: String {
+        return String(format: "%.f", self) + "°C"
+    }
+
+    var roundedFahrenheit: String {
+        return String(format: "%.f", self) + "°F"
+    }
+
+    var convertedToCelcius: String {
+        return String(format: "%.f", (self - 32) / 1.8) + "°C"
+    }
+}

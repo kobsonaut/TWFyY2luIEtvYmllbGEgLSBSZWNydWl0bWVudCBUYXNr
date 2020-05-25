@@ -15,4 +15,8 @@ class Configuration {
         static let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
         static let APP_ID = "e6a799315fe33235d798a65c2f1097a2"
     }
+
+    struct Settings {
+        static let useCelciusUnits = "useCelciusUnits"
+    }
 }

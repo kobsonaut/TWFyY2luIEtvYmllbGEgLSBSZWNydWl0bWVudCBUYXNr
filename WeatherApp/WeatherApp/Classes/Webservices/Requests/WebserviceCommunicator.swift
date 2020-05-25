@@ -57,24 +57,9 @@ class WebserviceCommunicator {
                 return
             }
 
-            self.parser.json(data: data, completion: completion)
+            OperationQueue.main.addOperation({ self.parser.json(data: data, completion: completion) })
         }
 
         task.resume()
-    }
-}
-
-
-// MARK: Parser
-struct Parser {
-    let jsonDecoder = JSONDecoder()
-    func json<T: Decodable>(data: Data, completion: @escaping ResultCallback<T>) {
-        do {
-            let result: T = try jsonDecoder.decode(T.self, from: data)
-            OperationQueue.main.addOperation { completion(.success(result)) }
-
-        } catch let error {
-            OperationQueue.main.addOperation { completion(.failure(.parseError(error: error))) }
-        }
     }
 }

@@ -61,8 +61,12 @@ class TableViewCell: UITableViewCell {
     // MARK: Update
     open func updateData(item: ItemWeather) -> () {
         self.titleLabel?.text = item.name
-        if let temp = item.main.temp {
-            self.descriptionLabel?.text = String(describing: temp) + "°C"
+        if let temp = item.main?.temp {
+            if UserDefaults.standard.bool(forKey: Configuration.Settings.useCelciusUnits) == true {
+                self.descriptionLabel?.text = temp.convertedToCelcius
+            } else {
+                self.descriptionLabel?.text = temp.roundedFahrenheit
+            }
         }
 
         self.layoutSubviews()
