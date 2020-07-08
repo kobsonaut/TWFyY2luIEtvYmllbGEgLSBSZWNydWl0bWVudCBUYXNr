@@ -1,1 +1,1 @@
-# TWFyY2luIEtvYmllbGEgLSBSZWNydWl0bWVudCBUYXNr
+# Edu project - weather app
